@@ -1,0 +1,102 @@
+.upload-file__container {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.signs-button__container {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.signs-icons__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    a {
+        color: #333;
+        transition: 0.2s ease all;
+    }
+
+    a:hover {
+        color: #3399FF;
+        transition: 0.2s ease all;
+    }
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.upload__disclaimer {
+    color: #333;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #eee;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.upload-file__button {
+    //height: 66px;
+    min-width: 150px;
+    max-width: 300px;
+    font-family: 'Open Sans', sans-serif;
+    color: #eee;
+    font-weight: bold;
+    border-radius: 15px;
+    border-width: 0;
+    background-color: #3399FF;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding: 20px 40px;
+    margin: 20px;
+    transition: all 0.2s ease;
+}
+
+.upload-file__button-grey {
+    color: #fff;
+    background-color: #aaa;
+
+}
+
+.upload-file__button-red {
+    color: #eee;
+    background-color: #FF3366;
+
+}
+
+
+
+.upload-file__button:hover {
+    background-color: darken(#3399FF, 7%);
+    transform: translateY(-3px);
+    transition: all 0.2s ease;
+}
+
+.upload-file__button-red:hover {
+    background-color: darken(#FF3366, 7%);
+    transform: translateY(-3px);
+    transition: all 0.2s ease;
+
+}
+
+.upload-file__button-grey:hover {
+    background-color: darken(#aaa, 7%);
+    transform: translateY(-3px);
+    transition: all 0.2s ease;
+}
