@@ -9,6 +9,9 @@ import cameraIcon from "../../assets/icons/camera-icon.png";
 import questionMark from "../../assets/icons/question-mark-icon.png";
 import axios from "axios";
 
+const imageUrl =
+  process.env.PUBLIC_URL + "/b8b57d9ae3f1650a69628afd0bf1ab18--sri-lanka.jpg";
+
 export default class BodyContainer extends Component {
   constructor(props) {
     super(props);
@@ -37,6 +40,10 @@ export default class BodyContainer extends Component {
     console.log("Uploaded File:" + event.target.files[0]);
   };
 
+  handleImageClick = () => {
+    window.open(imageUrl, "_blank");
+  };
+
   filterPredictions = (predictions) => {
     return predictions.map((pred) => ({
       letter: pred.letter
@@ -59,21 +66,15 @@ export default class BodyContainer extends Component {
           ? this.props.webcamCaptureBinary
           : this.state.imageFile
       );
-      axios
-        .post(
-          "https://sign-interpreter-ssl-api.herokuapp.com/predict",
-          data,
-          {}
-        )
-        .then((response) => {
-          let predictions = this.filterPredictions(response.data.predictions);
-          this.setState({
-            responseFromAPI: response,
-            predictions: predictions,
-            loading: false,
-          });
-          console.log("Response from API:" + response.data.predictions);
+      axios.post("http://127.0.0.1:5001/predict", data, {}).then((response) => {
+        let predictions = this.filterPredictions(response.data.predictions);
+        this.setState({
+          responseFromAPI: response,
+          predictions: predictions,
+          loading: false,
         });
+        console.log("Response from API:" + response.data.predictions);
+      });
     } catch (error) {
       console.log(error);
     }
@@ -117,6 +118,19 @@ export default class BodyContainer extends Component {
             src={cameraIcon}
           />
         </button>
+        <button
+          type="button"
+          className="upload-file__button upload-file__button-grey"
+          onClick={this.props.startWebcamVideo}
+        >
+          Stream Video
+          <img
+            style={{ marginLeft: "10px" }}
+            height="20px"
+            alt="camera icon"
+            src={cameraIcon}
+          />
+        </button>
       </div>
     );
   };
@@ -128,7 +142,7 @@ export default class BodyContainer extends Component {
         className="upload-file__button"
         onClick={this.sendToAPI}
       >
-        Interpret{" "}
+        Confirm{" "}
         {this.state.imageFile.name.length > 10
           ? this.state.imageFile.name.substring(0, 10) + "..."
           : this.state.imageFile.name.substring(0, 10)}
@@ -177,9 +191,10 @@ export default class BodyContainer extends Component {
               {/* "Icons made by Freepik from www.flaticon.com" */}
               <p>
                 <a
-                  href="https://teckensprakslexikon.su.se/kategori/handalfabetet"
-                  rel="noopener noreferrer"
+                  href={imageUrl}
                   target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={this.handleImageClick}
                 >
                   Don't know any signs? Click here for instructions.
                 </a>{" "}

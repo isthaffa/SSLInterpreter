@@ -1,0 +1,4 @@
+backend/assets/*
+backend/cnn/*
+backend/isthafa_fyp_env/*
+app/node_modules/*

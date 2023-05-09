@@ -1,0 +1,8 @@
+tensorflow
+Flask
+Flask-Cors
+numpy
+Pillow
+opencv-python
+mediapipe
+keyboard
